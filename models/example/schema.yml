@@ -9,7 +9,7 @@ models:
             description: "The primary key for this table"
             tests:
                 - unique
-                - not_null
+
 
     - name: my_second_dbt_model
       description: "A starter dbt model"
@@ -19,3 +19,39 @@ models:
             tests:
                 - unique
                 - not_null
+
+
+    - name: snowflake_customer_purchases
+      description: "the total purchases for each customer in snowflake sample data"
+      columns:
+        - name: c_custkey
+          tests:
+            - unique
+            - not_null
+####################
+    - name: cumulative_orders_by_date
+      description: "cumulative purchases for each customer in snowflake sample data"
+      columns:
+        - name: O_TOTALPRICE
+          tests:
+            - unique
+            - not_null
+  ################
+    - name: dates
+  ################
+    - name: incremental_time
+  ################
+    - name: incremental_time_ii
+  #################
+    - name: customer
+      description: "assignment 3 model"
+      columns:
+          - name: c_custkey
+            description: "The primary key for this table"
+            tests:
+                - not_null
+                - unique
+          - name: c_mktsegment
+            tests:
+              - accepted_values:
+                  values: ['BUILDING', 'AUTOMOBILE', 'MACHINERY', 'HOUSEHOLD','FURNITURE']
